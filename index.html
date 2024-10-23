@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="app-container">
-        <div class="weather-dashboard">
+        <div class="weather-dashboard" id="weather-dashboard">
             <h1 class="dashboard-title">Weather Dashboard</h1>
             <div class="input-container">
                 <input type="text" id="city" placeholder="Enter city name..." autocomplete="off" class="minimal-input" aria-label="City name" oninput="fetchSuggestions()">
@@ -43,11 +43,6 @@
                     <p id="sunrise" class="detail"></p>
                     <p id="sunset" class="detail"></p>
                 </div>
-            </div>
-
-            <div id="forecast-container" class="forecast-card" style="display: none;">
-                <h3 class="forecast-title">5-Day Forecast</h3>
-                <div id="forecast" class="forecast-details"></div>
             </div>
 
             <div id="error-message" class="error-message" style="display: none;"></div>

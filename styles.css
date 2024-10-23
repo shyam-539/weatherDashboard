@@ -7,10 +7,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #e0f7fa; /* Light blue background */
     color: #333;
+    transition: background-image 0.5s ease; /* Smooth transition for background */
 }
 
+/* App Container */
 .app-container {
     width: 100%;
     display: flex;
@@ -19,7 +20,8 @@ body {
 
 /* Weather Dashboard */
 .weather-dashboard {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.1); /* Transparent background for glassmorphism */
+    backdrop-filter: blur(10px); /* Blurring effect */
     padding: 40px 30px; /* Adjusted padding for better spacing */
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -59,7 +61,7 @@ body {
 }
 
 .search-btn, .location-btn {
-    background-color: #050d22; /* Teal color */
+    background-color: #050d22; /* Button color */
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -67,7 +69,6 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .search-btn:hover, .location-btn:hover {
@@ -154,7 +155,7 @@ body {
 
 .detail {
     font-size: 14px;
-    color: #555;
+    color: #EAE0D5;
 }
 
 /* Preloader */
@@ -239,3 +240,4 @@ body {
         font-size: 12px; /* Smaller detail font */
     }
 }
+    
