@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="weather-dashboard">
+            <h1>Weather Dashboard</h1>
+            <div class="search-container">
+                <input type="text" id="city" placeholder="Enter city name" autocomplete="off">
+                <button onclick="getWeather()">Get Weather</button>
+                <button onclick="getWeatherByLocation()" class="location-btn">Use My Location</button>
+                <div class="toggle-container">
+                    <label for="unit-toggle">Celsius</label>
+                    <input type="checkbox" id="unit-toggle" onclick="toggleUnit()"> Fahrenheit
+                </div>
+            </div>
+
+            <div id="loading" class="spinner" style="display: none;">Loading...</div>
+
+            <div id="weather-container" class="weather-card" style="display: none;">
+                <div class="header">
+                    <h2 id="city-name"></h2>
+                    <div class="icon-temp">
+                        <img id="weather-icon" alt="Weather Icon">
+                        <div>
+                            <p id="temperature" class="temperature"></p>
+                            <p id="feels-like" class="feels-like"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details">
+                    <p id="weather"></p>
+                    <p id="humidity"></p>
+                    <p id="wind-speed"></p>
+                    <p id="sunrise"></p>
+                    <p id="sunset"></p>
+                </div>
+
+                <div class="forecast-container">
+                    <h3>5-Day Forecast</h3>
+                    <div class="forecast" id="forecast">
+                        <!-- Forecast Data Will Be Injected Here -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
