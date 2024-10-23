@@ -1,10 +1,15 @@
 const apiKey = 'befd984de4d3c050671d4eb935e6c660';
 let isCelsius = true;
+let lastWeatherData = null; // Store the last fetched weather data
 
 // Function to get weather by city
 async function getWeather() {
     const city = document.getElementById('city').value;
-    fetchWeather(city);
+    if (!city) {
+        alert('Please enter a city name.');
+        return;
+    }
+    await fetchWeather(city);
 }
 
 // Function to get weather by location (geolocation)
@@ -24,14 +29,14 @@ async function getWeatherByLocation() {
 async function fetchWeather(city) {
     const unit = isCelsius ? 'metric' : 'imperial';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-    fetchWeatherData(url);
+    await fetchWeatherData(url);
 }
 
 // Fetch weather data for coordinates
 async function fetchWeatherByCoords(lat, lon) {
     const unit = isCelsius ? 'metric' : 'imperial';
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
-    fetchWeatherData(url);
+    await fetchWeatherData(url);
 }
 
 // Fetch weather data from API
@@ -40,6 +45,7 @@ async function fetchWeatherData(url) {
     const weatherContainer = document.getElementById('weather-container');
     const errorMessage = document.getElementById('error-message');
 
+    // Reset UI elements
     weatherContainer.style.display = 'none';
     errorMessage.style.display = 'none';
     loadingElement.style.display = 'block';
@@ -49,8 +55,9 @@ async function fetchWeatherData(url) {
         const data = await response.json();
 
         if (response.ok) {
+            lastWeatherData = data; // Store the fetched weather data
             displayWeatherData(data);
-            updateBackground(data.weather[0].main);  // Dynamically change background
+            updateBackground(data.weather[0].main); // Dynamically change background
         } else {
             throw new Error(data.message);
         }
@@ -67,7 +74,6 @@ function displayWeatherData(data) {
     document.getElementById('city-name').innerText = data.name;
     document.getElementById('temperature').innerText = `${data.main.temp}°${isCelsius ? 'C' : 'F'}`;
     document.getElementById('feels-like').innerText = `Feels like: ${data.main.feels_like}°${isCelsius ? 'C' : 'F'}`;
-    document.getElementById('weather').innerText = `Weather: ${data.weather[0].description}`;
     document.getElementById('humidity').innerText = `Humidity: ${data.main.humidity}%`;
     document.getElementById('wind-speed').innerText = `Wind Speed: ${data.wind.speed} ${isCelsius ? 'm/s' : 'mph'}`;
     document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
@@ -106,5 +112,10 @@ function updateBackground(weather) {
 // Toggle between Celsius and Fahrenheit
 function toggleUnit() {
     isCelsius = !isCelsius;
-    getWeather();  // Refresh weather with the new unit
+    if (lastWeatherData) {
+        // Update the display based on the last fetched weather data
+        displayWeatherData(lastWeatherData);
+    } else {
+        alert('No weather data available. Please search for a city first.');
+    }
 }
