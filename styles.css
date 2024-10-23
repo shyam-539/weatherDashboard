@@ -7,27 +7,32 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f9;
+    background-color: #e0f7fa; /* Light blue background */
     color: #333;
 }
 
 .app-container {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
 }
 
 /* Weather Dashboard */
 .weather-dashboard {
     background: #ffffff;
-    padding: 40px;
-    border-radius: 10px;
+    padding: 40px 30px; /* Adjusted padding for better spacing */
+    border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 100%;
-    max-width: 400px;
-    transition: all 0.3s ease;
+    width: 90%;
+    max-width: 450px;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #444;
 }
 
 /* Input Container */
@@ -35,35 +40,38 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 .minimal-input {
-    width: 65%;
-    padding: 10px 15px;
+    flex-grow: 1; 
+    padding: 12px 15px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s;
+    margin-right: 10px; /* Right margin for spacing */
 }
 
 .minimal-input:focus {
-    border-color: #333;
+    border-color: #00796b; /* Focus border color */
 }
 
 .search-btn, .location-btn {
-    background-color: #333;
+    background-color: #050d22; /* Teal color */
     color: #fff;
     border: none;
     border-radius: 8px;
-    padding: 10px 15px;
-    font-size: 14px;
+    padding: 12px 15px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .search-btn:hover, .location-btn:hover {
-    background-color: #555;
+    background-color: #005b4f; /* Darker shade on hover */
 }
 
 /* Toggle Unit Switch */
@@ -75,7 +83,7 @@ body {
 }
 
 .toggle-label {
-    font-size: 14px;
+    font-size: 16px;
     margin: 0 10px;
     color: #777;
 }
@@ -93,7 +101,7 @@ body {
 }
 
 .unit-toggle:checked {
-    background-color: #333;
+    background-color: #00796b; /* Teal color when checked */
 }
 
 .unit-toggle::before {
@@ -154,17 +162,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column; /* Stack spinner and text */
 }
 
 .spinner {
     border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #333;
+    border-top: 4px solid #00796b; /* Teal spinner */
     border-radius: 50%;
     width: 30px;
     height: 30px;
     animation: spin 1s linear infinite;
 }
 
+.loading-text {
+    margin-top: 10px; /* Space between spinner and text */
+}
+
+/* Keyframes for spinner */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -174,4 +188,54 @@ body {
 .error-message {
     color: red;
     margin-top: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .weather-dashboard {
+        padding: 30px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .input-container {
+        flex-direction: column; /* Stack input and buttons */
+        align-items: stretch; /* Stretch buttons */
+    }
+
+    .minimal-input {
+        width: 100%; /* Full width input */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 10px; /* Space between input and buttons */
+    }
+
+    .search-btn, .location-btn {
+        width: 100%; /* Full width buttons */
+        margin-left: 0; /* Remove left margin */
+        margin-bottom: 5px; /* Space between buttons */
+    }
+
+    .dashboard-title {
+        font-size: 24px; /* Smaller title */
+    }
+}
+
+@media (max-width: 576px) {
+    .city-title {
+        font-size: 20px; /* Smaller title */
+    }
+
+    .temperature {
+        font-size: 28px; /* Smaller temperature */
+    }
+
+    .minimal-input {
+        font-size: 14px; /* Smaller input font */
+    }
+
+    .search-btn, .location-btn {
+        font-size: 14px; /* Smaller button font */
+    }
+
+    .detail {
+        font-size: 12px; /* Smaller detail font */
+    }
 }

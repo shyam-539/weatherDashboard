@@ -10,26 +10,26 @@
 <body>
     <div class="app-container">
         <div class="weather-dashboard">
-            <!-- Search Container -->
+            <h1 class="dashboard-title">Weather Dashboard</h1>
             <div class="input-container">
-                <input type="text" id="city" placeholder="Search for a city" autocomplete="off" class="minimal-input" aria-label="City name">
-                <button class="search-btn" onclick="getWeather()">Search</button>
-                <button class="location-btn" onclick="getWeatherByLocation()">Use My Location</button>
+                <input type="text" id="city" placeholder="Enter city name..." autocomplete="off" class="minimal-input" aria-label="City name" oninput="fetchSuggestions()">
+                <button class="search-btn" onclick="getWeather()">🔍</button>
+                &nbsp;
+                <button class="location-btn" onclick="getWeatherByLocation()">📍</button>
             </div>
+            <div id="suggestions" class="suggestions-container" style="display: none;"></div>
 
-            <!-- Toggle Unit Switch -->
             <div class="toggle-container">
-                <label for="unit-toggle" class="toggle-label">Celsius</label>
+                <label class="toggle-label" for="unit-toggle">Celsius</label>
                 <input type="checkbox" id="unit-toggle" class="unit-toggle" onclick="toggleUnit()">
-                <label for="unit-toggle" class="toggle-label">Fahrenheit</label>
+                <label class="toggle-label" for="unit-toggle">Fahrenheit</label>
             </div>
 
-            <!-- Preloader -->
             <div id="loading" class="preloader" style="display: none;">
                 <div class="spinner"></div>
+                <p class="loading-text">Fetching weather data...</p>
             </div>
 
-            <!-- Weather Details -->
             <div id="weather-container" class="weather-card" style="display: none;">
                 <h2 id="city-name" class="city-title"></h2>
                 <div class="weather-info">
@@ -45,7 +45,11 @@
                 </div>
             </div>
 
-            <!-- Error Message -->
+            <div id="forecast-container" class="forecast-card" style="display: none;">
+                <h3 class="forecast-title">5-Day Forecast</h3>
+                <div id="forecast" class="forecast-details"></div>
+            </div>
+
             <div id="error-message" class="error-message" style="display: none;"></div>
         </div>
     </div>
