@@ -87,61 +87,63 @@ function changeBackground(condition) {
     const temperature = document.querySelector('.temperature');
     const weatherDetails = document.querySelector('.weather-details');
 
-    console.log("Weather Condition: ", condition); 
+    console.log("Weather Condition: ", condition);
 
     const styles = {
         clear: {
-            backgroundImage: "url('./images/clear.jpg')", 
-            titleColor: '#8C9EFF',   
-            tempColor: '#8C9EFF',    
-            detailsColor: '#333333'  
+            backgroundImage: "url('./images/clear.jpg')",
+            titleColor: '#4A90E2',    
+            tempColor: '#4A90E2',
+            detailsColor: '#2C3E50'   
         },
         sunny: {
-            backgroundImage: "url('./images/sunny.jpg')",
-            titleColor: '#FFC107',   
-            tempColor: '#FFC107',
-            detailsColor: '#4A4A4A'  
+            backgroundImage: "url('./images/clear.jpg')",
+            titleColor: '#FF9800',   
+            tempColor: '#FF9800',
+            detailsColor: '#333333'  
         },
         clouds: {
             backgroundImage: "url('./images/cloudy.jpg')",
-            titleColor: '#90A4AE',    
-            tempColor: '#90A4AE',
-            detailsColor: '#505050'   
+            titleColor: '#3C493F',    
+            tempColor: '#3C493F',
+            detailsColor: '#2E2E2E'   
         },
         rain: {
             backgroundImage: "url('./images/rainy.jpg')",
-            titleColor: '#5C6BC0',    
-            tempColor: '#5C6BC0',
-            detailsColor: '#d3d3d3'  
+            titleColor: '#6FFFE9',   
+            tempColor: '#6FFFE9',
+            detailsColor: '#C2FBEF'  
         },
         snow: {
-            backgroundImage: "url('./images/snowy.jpg')",
-            titleColor: '#B3E5FC',    
-            tempColor: '#B3E5FC',
-            detailsColor: '#2e2e2e'   
+            backgroundImage: "url('./images/snow.jpg')",
+            titleColor: '#81D4FA',   
+            tempColor: '#81D4FA',
+            detailsColor: '#263238'   
         },
         mist: {
-            backgroundImage: "url('./images/misty.jpg')",
+            backgroundImage: "url('./images/haze.jpg')",
             titleColor: '#B0BEC5',    
             tempColor: '#B0BEC5',
-            detailsColor: '#555555'   
+            detailsColor: '#37474F'   
         },
         thunderstorm: {
             backgroundImage: "url('./images/thunderstorm.jpg')",
             titleColor: '#FF7043',   
             tempColor: '#FF7043',
-            detailsColor: '#ffffff'   
+            detailsColor: '#FAFAFA'   
         },
         default: {
             backgroundImage: "url('./images/default.jpg')",
             titleColor: '#9E9E9E',    
             tempColor: '#9E9E9E',
-            detailsColor: '#4e4e4e'  
+            detailsColor: '#4e4e4e'   
         }
     };
 
-    // Apply the styles based on the current condition or default
-    const weatherStyle = styles[condition] || styles['default'];
+    // Normalize condition for consistent matching
+    const weatherStyle = styles[condition.toLowerCase()] || styles['default'];
+
+    // Apply styles
     body.style.backgroundImage = weatherStyle.backgroundImage;
     cityTitle.style.color = weatherStyle.titleColor;
     temperature.style.color = weatherStyle.tempColor;
@@ -181,9 +183,13 @@ function getWeatherByLocation() {
 // Toggle temperature unit
 function toggleUnit() {
     isCelsius = !isCelsius; // Switch the unit
-    const cityInput = document.getElementById('city').value;
-    if (cityInput) {
-        getWeather(cityInput); // Fetch weather again for the current city
+    if (lastWeatherData) {
+        displayWeather(lastWeatherData); 
+    } else {
+        const cityInput = document.getElementById('city').value;
+        if (cityInput) {
+            getWeather(cityInput); 
+        }
     }
 }
 
