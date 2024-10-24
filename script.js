@@ -91,54 +91,62 @@ function changeBackground(condition) {
 
     const styles = {
         clear: {
-            backgroundImage: "url('./images/sunny.jpg')",
-            titleColor: '#ffeb3b', 
-            tempColor: '#ffeb3b',  
-            detailsColor: '#fff59d'  
+            backgroundImage: "url('./images/clear.jpg')", 
+            titleColor: '#8C9EFF',   
+            tempColor: '#8C9EFF',    
+            detailsColor: '#333333'  
         },
         sunny: {
             backgroundImage: "url('./images/sunny.jpg')",
-            titleColor: '#ffeb3b',
-            tempColor: '#ffeb3b',
-            detailsColor: '#fff59d'  
+            titleColor: '#FFC107',   
+            tempColor: '#FFC107',
+            detailsColor: '#4A4A4A'  
         },
         clouds: {
             backgroundImage: "url('./images/cloudy.jpg')",
-            titleColor: '#ffffff',
-            tempColor: '#ffffff',
-            detailsColor: '#cfd8dc'  
+            titleColor: '#90A4AE',    
+            tempColor: '#90A4AE',
+            detailsColor: '#505050'   
         },
         rain: {
             backgroundImage: "url('./images/rainy.jpg')",
-            titleColor: '#0d47a1',
-            tempColor: '#0d47a1',
-            detailsColor: '#64b5f6'  
+            titleColor: '#5C6BC0',    
+            tempColor: '#5C6BC0',
+            detailsColor: '#d3d3d3'  
         },
         snow: {
             backgroundImage: "url('./images/snowy.jpg')",
-            titleColor: '#e1f5fe',
-            tempColor: '#e1f5fe',
-            detailsColor: '#bbdefb'  
+            titleColor: '#B3E5FC',    
+            tempColor: '#B3E5FC',
+            detailsColor: '#2e2e2e'   
         },
         mist: {
             backgroundImage: "url('./images/misty.jpg')",
-            titleColor: '#b0bec5',
-            tempColor: '#b0bec5',
-            detailsColor: '#eceff1'  
+            titleColor: '#B0BEC5',    
+            tempColor: '#B0BEC5',
+            detailsColor: '#555555'   
         },
         thunderstorm: {
             backgroundImage: "url('./images/thunderstorm.jpg')",
-            titleColor: '#ff5722',
-            tempColor: '#ff5722',
-            detailsColor: '#ffccbc' 
+            titleColor: '#FF7043',   
+            tempColor: '#FF7043',
+            detailsColor: '#ffffff'   
         },
         default: {
             backgroundImage: "url('./images/default.jpg')",
-            titleColor: '#ffeb3b',
-            tempColor: '#ffeb3b',
-            detailsColor: '#EAE0D5'  
+            titleColor: '#9E9E9E',    
+            tempColor: '#9E9E9E',
+            detailsColor: '#4e4e4e'  
         }
     };
+
+    // Apply the styles based on the current condition or default
+    const weatherStyle = styles[condition] || styles['default'];
+    body.style.backgroundImage = weatherStyle.backgroundImage;
+    cityTitle.style.color = weatherStyle.titleColor;
+    temperature.style.color = weatherStyle.tempColor;
+    weatherDetails.style.color = weatherStyle.detailsColor;
+}
     
     // Normalize condition for consistent matching
     const weatherStyle = styles[condition.toLowerCase()] || styles.default;
