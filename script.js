@@ -87,59 +87,59 @@ function changeBackground(condition) {
     const temperature = document.querySelector('.temperature');
     const weatherDetails = document.querySelector('.weather-details');
 
-    console.log("Weather Condition: ", condition); // Log the condition for debugging
+    console.log("Weather Condition: ", condition); 
 
     const styles = {
         clear: {
             backgroundImage: "url('./images/sunny.jpg')",
             titleColor: '#ffeb3b', 
             tempColor: '#ffeb3b',  
-            detailsColor: '#EAE0D5'   
+            detailsColor: '#fff59d'  
         },
         sunny: {
             backgroundImage: "url('./images/sunny.jpg')",
             titleColor: '#ffeb3b',
             tempColor: '#ffeb3b',
-            detailsColor: '#EAE0D5'
+            detailsColor: '#fff59d'  
         },
         clouds: {
             backgroundImage: "url('./images/cloudy.jpg')",
             titleColor: '#ffffff',
             tempColor: '#ffffff',
-            detailsColor: '#EAE0D5'
+            detailsColor: '#cfd8dc'  
         },
         rain: {
             backgroundImage: "url('./images/rainy.jpg')",
             titleColor: '#0d47a1',
             tempColor: '#0d47a1',
-            detailsColor: '#EAE0D5'
+            detailsColor: '#64b5f6'  
         },
         snow: {
             backgroundImage: "url('./images/snowy.jpg')",
             titleColor: '#e1f5fe',
             tempColor: '#e1f5fe',
-            detailsColor: '#EAE0D5'
+            detailsColor: '#bbdefb'  
         },
         mist: {
             backgroundImage: "url('./images/misty.jpg')",
             titleColor: '#b0bec5',
             tempColor: '#b0bec5',
-            detailsColor: '#EAE0D5'
+            detailsColor: '#eceff1'  
         },
         thunderstorm: {
             backgroundImage: "url('./images/thunderstorm.jpg')",
             titleColor: '#ff5722',
             tempColor: '#ff5722',
-            detailsColor: '#EAE0D5'
+            detailsColor: '#ffccbc' 
         },
         default: {
             backgroundImage: "url('./images/default.jpg')",
             titleColor: '#ffeb3b',
             tempColor: '#ffeb3b',
-
+            detailsColor: '#EAE0D5'  
         }
     };
-
+    
     // Normalize condition for consistent matching
     const weatherStyle = styles[condition.toLowerCase()] || styles.default;
 
