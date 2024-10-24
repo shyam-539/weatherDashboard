@@ -80,7 +80,6 @@ function displayWeather(data) {
     weatherContainer.style.display = 'block'; // Show weather container
 }
 
-// Change background and font color based on weather conditions
 function changeBackground(condition) {
     const body = document.body;
     const cityTitle = document.querySelector('.city-title');
@@ -149,17 +148,6 @@ function changeBackground(condition) {
     temperature.style.color = weatherStyle.tempColor;
     weatherDetails.style.color = weatherStyle.detailsColor;
 }
-    
-    // Normalize condition for consistent matching
-    const weatherStyle = styles[condition.toLowerCase()] || styles.default;
-
-    // Apply styles
-    body.style.backgroundImage = weatherStyle.backgroundImage;
-    cityTitle.style.color = weatherStyle.titleColor;
-    temperature.style.color = weatherStyle.tempColor;
-    weatherDetails.style.color = weatherStyle.detailsColor;
-}
-
 
 // Get weather by user location
 function getWeatherByLocation() {
@@ -180,15 +168,18 @@ function getWeatherByLocation() {
     }
 }
 
+
 // Toggle temperature unit
 function toggleUnit() {
     isCelsius = !isCelsius; // Switch the unit
+
+    // Check if we have last fetched weather data
     if (lastWeatherData) {
-        displayWeather(lastWeatherData); 
+        displayWeather(lastWeatherData); // Re-display with the new unit
     } else {
         const cityInput = document.getElementById('city').value;
         if (cityInput) {
-            getWeather(cityInput); 
+            getWeather(cityInput); // Fetch weather again for the current city
         }
     }
 }
