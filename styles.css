@@ -8,7 +8,10 @@ body {
     align-items: center;
     height: 100vh;
     color: #333;
-    transition: background-image 0.5s ease; /* Smooth transition for background */
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    transition: background-image 0.5s ease; 
 }
 
 /* App Container */
@@ -20,7 +23,7 @@ body {
 
 /* Weather Dashboard */
 .weather-dashboard {
-    background: rgba(255, 255, 255, 0.1); /* Transparent background for glassmorphism */
+    background: rgba(255, 255, 255, 0.1); 
     backdrop-filter: blur(10px); /* Blurring effect */
     padding: 40px 30px; /* Adjusted padding for better spacing */
     border-radius: 12px;
@@ -42,7 +45,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    flex-wrap: wrap; 
 }
 
 .minimal-input {
@@ -53,15 +56,15 @@ body {
     font-size: 16px;
     outline: none;
     transition: border-color 0.3s;
-    margin-right: 10px; /* Right margin for spacing */
+    margin-right: 10px;
 }
 
 .minimal-input:focus {
-    border-color: #00796b; /* Focus border color */
+    border-color: #00796b;
 }
 
 .search-btn, .location-btn {
-    background-color: #050d22; /* Button color */
+    background-color: #050d22; 
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -72,7 +75,7 @@ body {
 }
 
 .search-btn:hover, .location-btn:hover {
-    background-color: #005b4f; /* Darker shade on hover */
+    background-color: #005b4f; 
 }
 
 /* Toggle Unit Switch */
@@ -102,7 +105,7 @@ body {
 }
 
 .unit-toggle:checked {
-    background-color: #00796b; /* Teal color when checked */
+    background-color: #00796b; 
 }
 
 .unit-toggle::before {
@@ -155,7 +158,6 @@ body {
 
 .detail {
     font-size: 14px;
-    color: #EAE0D5;
 }
 
 /* Preloader */
@@ -163,12 +165,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Stack spinner and text */
+    flex-direction: column; 
 }
 
 .spinner {
     border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #00796b; /* Teal spinner */
+    border-top: 4px solid #00796b; 
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -176,7 +178,7 @@ body {
 }
 
 .loading-text {
-    margin-top: 10px; /* Space between spinner and text */
+    margin-top: 10px; 
 }
 
 /* Keyframes for spinner */
@@ -194,50 +196,50 @@ body {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .weather-dashboard {
-        padding: 30px 20px; /* Adjust padding for smaller screens */
+        padding: 30px 20px; 
     }
 
     .input-container {
-        flex-direction: column; /* Stack input and buttons */
-        align-items: stretch; /* Stretch buttons */
+        flex-direction: column; 
+        align-items: stretch; 
     }
 
     .minimal-input {
-        width: 100%; /* Full width input */
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 10px; /* Space between input and buttons */
+        width: 100%; 
+        margin-right: 0; 
+        margin-bottom: 10px; 
     }
 
     .search-btn, .location-btn {
-        width: 100%; /* Full width buttons */
-        margin-left: 0; /* Remove left margin */
-        margin-bottom: 5px; /* Space between buttons */
+        width: 100%; 
+        margin-left: 0; 
+        margin-bottom: 5px; 
     }
 
     .dashboard-title {
-        font-size: 24px; /* Smaller title */
+        font-size: 24px; 
     }
 }
 
 @media (max-width: 576px) {
     .city-title {
-        font-size: 20px; /* Smaller title */
+        font-size: 20px; 
     }
 
     .temperature {
-        font-size: 28px; /* Smaller temperature */
+        font-size: 28px;
     }
 
     .minimal-input {
-        font-size: 14px; /* Smaller input font */
+        font-size: 14px; 
     }
 
     .search-btn, .location-btn {
-        font-size: 14px; /* Smaller button font */
+        font-size: 14px; 
     }
 
     .detail {
-        font-size: 12px; /* Smaller detail font */
+        font-size: 12px; 
     }
 }
     

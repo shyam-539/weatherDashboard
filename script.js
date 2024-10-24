@@ -179,13 +179,13 @@ function toggleUnit() {
     }
 }
 
-// Fetch suggestions (you can implement your suggestion logic here)
+// Fetch suggestions
 function fetchSuggestions() {
     const suggestionsContainer = document.getElementById('suggestions');
     const cityInput = document.getElementById('city').value.trim();
 
-    // Example: Static suggestions (replace with actual fetching logic)
-    const staticSuggestions = ['kozhikode', 'kollam', 'kottakkal', 'meppadi', 'vytilla'];
+    
+   // const staticSuggestions = ['kozhikode', 'kollam', 'kottakkal', 'meppadi', 'vytilla'];
     const filteredSuggestions = staticSuggestions.filter(city => city.toLowerCase().startsWith(cityInput.toLowerCase()));
 
     if (filteredSuggestions.length > 0) {
